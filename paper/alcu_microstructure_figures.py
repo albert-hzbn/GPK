@@ -633,12 +633,12 @@ def main_figure():
                      envelope["theta_prime_mean_thickness_nm"]["maximum"],
                      envelope["theta_prime_fraction"]["maximum"]])
     x = np.arange(3); width = 0.34
-    axe.bar(x-width/2, np.ones(3), width, color="#1F4FB4", label="experiment")
-    axe.errorbar(x-width/2, np.ones(3), yerr=exp_sd/exp, fmt="none",
-                 ecolor="black", capsize=2, lw=0.8)
-    axe.bar(x+width/2, pred/exp, width, color="#D62020", label="conditional GPK")
+    # Dot plot (npj figure guidelines): markers with their uncertainty ranges.
+    axe.errorbar(x-width/2, np.ones(3), yerr=exp_sd/exp, fmt="s", ms=6,
+                 color="#1F4FB4", ecolor="#1F4FB4", capsize=3, lw=1.0, label="experiment")
     axe.errorbar(x+width/2, pred/exp, yerr=np.vstack(((pred-lo)/exp, (hi-pred)/exp)),
-                 fmt="none", ecolor="black", capsize=2, lw=0.8)
+                 fmt="o", ms=6, color="#D62020", ecolor="#D62020", capsize=3, lw=1.0,
+                 label="conditional GPK")
     axe.axhline(1.0, color="0.3", lw=0.7)
     axe.set_xticks(x, ["diameter", "thickness", "fraction"])
     axe.set_ylim(0.35, 1.86)
@@ -659,19 +659,19 @@ def main_figure():
     aspect_lo = float(envelope["theta_prime_mean_aspect_ratio"]["minimum"])
     aspect_hi = float(envelope["theta_prime_mean_aspect_ratio"]["maximum"])
     aspect = [aspect_pred, 39.0]
-    bars = axf.barh([0, 1], aspect, color=["#D62020", "#1F4FB4"])
+    # Dot plot (npj figure guidelines): markers with their uncertainty ranges.
     axf.errorbar(aspect_pred, 0,
                  xerr=np.asarray([[aspect_pred-aspect_lo], [aspect_hi-aspect_pred]]),
-                 fmt="none", ecolor="black", capsize=2, lw=0.8)
-    axf.errorbar(39.0, 1, xerr=6.6, fmt="none", ecolor="black", capsize=2, lw=0.8)
+                 fmt="o", ms=7, color="#D62020", ecolor="#D62020", capsize=3, lw=1.0)
+    axf.errorbar(39.0, 1, xerr=6.6, fmt="s", ms=7, color="#1F4FB4", ecolor="#1F4FB4",
+                 capsize=3, lw=1.0)
     axf.set_yticks([0, 1], ["conditional GPK", "experiment"]); axf.invert_yaxis()
     axf.set(xlabel="aspect ratio", title="168 h aspect ratio", xlim=(0, 52))
     axf.grid(axis="x", alpha=0.2)
-    for bar, value in zip(bars, aspect):
-        # Pull the values farther inside the bars so the horizontal uncertainty
-        # bars and caps remain visually separate from the text.
-        axf.text(max(4.0, value-11.0), bar.get_y()+bar.get_height()/2, f"{value:.1f}",
-                 ha="right", va="center", color="white", weight="bold", fontsize=8.0)
+    for row, (value, right) in enumerate(zip(aspect, (aspect_hi, 39.0 + 6.6))):
+        # Label each marker just right of its uncertainty bar.
+        axf.text(right + 1.2, row, f"{value:.1f}",
+                 ha="left", va="center", color="#222222", weight="bold", fontsize=8.0)
     # The phase-field context is already stated in the caption.  Keeping it out
     # of the plotting area prevents the note from obscuring the experiment bar.
     axf.text(0.02, 0.98, "f", transform=axf.transAxes, weight="bold", fontsize=10,
@@ -802,7 +802,10 @@ def mesh_convergence_figure():
     vf3h, ar3h = endpoint("three_dimensional_mesh_ultrafine")
     x = np.arange(2)
     labels = [r"96$^3$", r"128$^3$"]
-    axes[1].bar(x, 100*np.asarray([vf3b, vf3h]), color=["#7EA6E0", "#E0A100"])
+    # Dot plots (npj figure guidelines): one marker per mesh on a thin stem.
+    axes[1].vlines(x, 0, 100*np.asarray([vf3b, vf3h]), colors=["#7EA6E0", "#E0A100"], lw=1.6)
+    axes[1].scatter(x, 100*np.asarray([vf3b, vf3h]), s=52, c=["#7EA6E0", "#E0A100"], zorder=3)
+    axes[1].set_xlim(-0.6, 1.6)
     axes[1].set_xticks(x, labels)
     axes[1].set(ylabel="precipitate fraction (%)", title="3D volume fraction at 500 s")
     axes[1].set_ylim(0, 100*max(vf3b, vf3h)*1.16)
@@ -811,7 +814,9 @@ def mesh_convergence_figure():
                  f"{rel(vf3b, vf3h):.2f}% diff.", ha="center", fontsize=8.2,
                  bbox=SI_TEXT_BOX)
 
-    axes[2].bar(x, [ar3b, ar3h], color=["#7EA6E0", "#E0A100"])
+    axes[2].vlines(x, 0, [ar3b, ar3h], colors=["#7EA6E0", "#E0A100"], lw=1.6)
+    axes[2].scatter(x, [ar3b, ar3h], s=52, c=["#7EA6E0", "#E0A100"], zorder=3)
+    axes[2].set_xlim(-0.6, 1.6)
     axes[2].set_xticks(x, labels)
     axes[2].set(ylabel="resolved aspect ratio", title="3D shape metric at 500 s")
     ar_max = max(ar3b, ar3h)

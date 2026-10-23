@@ -694,12 +694,15 @@ def foundational_validation() -> None:
         measured.append(stats.linregress(history[:, 0], history[:, 1]).slope /
                         stats.linregress(exact[:, 0], exact[:, 1]).slope)
     x = np.arange(3)
-    ax.bar(x, measured, width=0.56, color=[BLUE, GREEN, PURPLE], label="GPK")
+    # Dot plot (npj figure guidelines): one marker per value on a thin stem.
+    ax.vlines(x, 0, measured, colors=[BLUE, GREEN, PURPLE], lw=1.6, zorder=2)
+    ax.scatter(x, measured, s=46, c=[BLUE, GREEN, PURPLE], zorder=3, label="GPK")
     ax.axhline(1.0, color=ORANGE, linestyle="--", label="Gauss-Bonnet")
+    ax.set_xlim(-0.6, 2.6)
     ax.set_xticks(x, shapes)
-    ax.set_ylim(0, 1.16)
+    ax.set_ylim(0, 1.32)
     clean(ax, "a", "Shape-independent area loss", ylabel="measured / exact")
-    ax.legend(frameon=True, loc="lower right", facecolor="white",
+    ax.legend(frameon=True, loc="upper center", ncol=2, facecolor="white",
               edgecolor="#CCCCCC", framealpha=1.0, borderpad=0.45)
 
     ax = axes[0, 1]
@@ -1529,15 +1532,18 @@ def curved_bicrystal_validation() -> None:
                  stats.linregress(exact[:, 0], exact[:, 1]).slope)
         ratios.append(ratio); errors.append(100*abs(ratio-1))
     xpos = np.arange(3)
-    ax.bar(xpos, ratios, color=[BLUE, GREEN, PURPLE], width=0.58)
+    # Dot plot (npj figure guidelines): one marker per value on a thin stem.
+    ax.vlines(xpos, 0.90, ratios, colors=[BLUE, GREEN, PURPLE], lw=1.6, zorder=2)
+    ax.scatter(xpos, ratios, s=46, c=[BLUE, GREEN, PURPLE], zorder=3)
     ax.axhline(1.0, color=ORANGE, ls="--", lw=1.2, label="Gauss-Bonnet")
+    ax.set_xlim(-0.6, 2.6)
     for x, ratio, error in zip(xpos, ratios, errors):
         ax.text(x, ratio+0.016, f"{error:.2f}%", ha="center", va="bottom",
                 fontsize=8.1, bbox=SI_TEXT_BOX)
     ax.set_xticks(xpos, ["circle", "ellipse", "square"])
     ax.set_ylim(0.90, 1.07)
     clean(ax, "b", "Shape-independent area loss", ylabel="measured / exact")
-    ax.legend(**SI_LEGEND, loc="lower right")
+    ax.legend(**SI_LEGEND, loc="upper right")
 
     gallery = outer[1].subgridspec(1, 3, wspace=0.15)
     cases = [
