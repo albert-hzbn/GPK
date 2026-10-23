@@ -1,0 +1,10 @@
+# Packages for regenerating the manuscript figures (paper/).
+# Tested versions are given in the comments.
+numpy>=2.0,<3          # 2.4.3
+scipy>=1.13,<2         # 1.17.1
+matplotlib>=3.8,<4     # 3.10.8
+pandas>=2.2,<4         # 3.0.2
+scikit-image>=0.24     # 0.26.0
+Pillow>=10,<13         # 12.1.1
+pycalphad==0.11.2      # Al-Cu CALPHAD calculation (scripts/generate_alcu_calphad.py)
+pyvista>=0.47,<0.49    # 0.47.1; the render_*.py scripts run under ParaView 5.13.3 pvpython

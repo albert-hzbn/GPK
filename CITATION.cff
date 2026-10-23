@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "If you use GPK, please cite the article below and this software."
+title: "GPK: Gaussian-projected kinetics for sharp-interface microstructure simulation"
+type: software
+authors:
+  - family-names: Linda
+    given-names: Albert
+    affiliation: Max Planck Institute for Sustainable Materials
+  - family-names: Raabe
+    given-names: Dierk
+    affiliation: Max Planck Institute for Sustainable Materials
+repository-code: "https://github.com/albert-hzbn/GPK"
+license: MIT
+version: "1.0.0"
+date-released: "2026-10-23"
+keywords:
+  - microstructure evolution
+  - sharp-interface method
+  - grain growth
+  - recrystallisation
+  - phase field
+preferred-citation:
+  type: article
+  title: "A general sharp-interface simulation framework for microstructure evolution"
+  authors:
+    - family-names: Linda
+      given-names: Albert
+    - family-names: Raabe
+      given-names: Dierk
+  journal: "npj Computational Materials"
+  status: submitted
+  year: 2026

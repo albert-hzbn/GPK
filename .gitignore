@@ -1,0 +1,40 @@
+# Build trees
+build/
+build_*/
+*.o
+*.a
+*.obj
+*.exe
+
+# Simulation output (regenerate with the input decks; see paper/LARGE_DATA.md)
+output/
+
+# Scratch folder written by scripts/validate_literature.py during ctest
+test/
+
+# Figures written by the paper scripts (regenerate with paper/*.py)
+paper/*.pdf
+paper/*.png
+paper/figures/*
+!paper/figures/pyvista_panels/
+
+# Local Python installs used by ParaView pvpython
+.pyvista_pv/
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+
+# Editors and tools
+.vscode/
+.idea/
+.claude/
+CLAUDE.md
+*.swp
+*~
+
+# OS
+.DS_Store
+Thumbs.db

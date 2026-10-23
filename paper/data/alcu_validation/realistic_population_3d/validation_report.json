@@ -1,0 +1,90 @@
+{
+  "model_version": "GPK population closure audit 2.0",
+  "assessment_type": "retrospective endpoint-conditioned challenge",
+  "domain_um": 1.0,
+  "initial_particles": 3014,
+  "final_particles": 17,
+  "conditioning_observables": [
+    "120 h theta-prime and theta-double-prime summary populations",
+    "168 h theta-prime number density",
+    "168 h theta-double-prime non-detection"
+  ],
+  "transferred_non_tem_observable": [
+    "independent local 128^3 GPK anisotropic shape response"
+  ],
+  "conditional_168h_challenge_observables": [
+    "theta-prime fraction",
+    "diameter",
+    "thickness",
+    "aspect ratio"
+  ],
+  "independence_warning": "The 168 h count is conditioned, so per-particle dimensions are not statistically independent of the endpoint data. No prospective or parameter-free alloy prediction is claimed.",
+  "local_gpk_aspect_response": 1.3021309848162672,
+  "primary_realization": {
+    "time_h": 168.0,
+    "theta_prime_count_per_um3": 17,
+    "theta_prime_fraction": 0.0155,
+    "theta_prime_mean_diameter_nm": 361.4605081137908,
+    "theta_prime_sd_diameter_nm": 28.364279467642817,
+    "theta_prime_mean_thickness_nm": 8.786519516713469,
+    "theta_prime_sd_thickness_nm": 0.5131295944468637,
+    "theta_prime_mean_aspect_ratio": 41.16423682901043,
+    "theta_prime_sd_aspect_ratio": 2.5745992775368967,
+    "theta_double_prime_count_per_um3": 0,
+    "theta_double_prime_fraction": 0.0
+  },
+  "ensemble_95_percent_interval": {
+    "theta_prime_mean_diameter_nm": {
+      "mean": 361.3001657191409,
+      "p2_5": 358.45136619354804,
+      "p97_5": 364.42123028610956
+    },
+    "theta_prime_mean_thickness_nm": {
+      "mean": 8.830955473442163,
+      "p2_5": 8.686042848469686,
+      "p97_5": 8.995698990435537
+    },
+    "theta_prime_mean_aspect_ratio": {
+      "mean": 40.949836242615255,
+      "p2_5": 39.89553017967948,
+      "p97_5": 42.03092097335481
+    }
+  },
+  "structural_sensitivity_envelope": {
+    "theta_prime_fraction": {
+      "minimum": 0.01175,
+      "maximum": 0.0155
+    },
+    "theta_prime_mean_diameter_nm": {
+      "minimum": 286.2061821547489,
+      "maximum": 434.75392387061436
+    },
+    "theta_prime_mean_thickness_nm": {
+      "minimum": 6.851500415417633,
+      "maximum": 10.78766562632449
+    },
+    "theta_prime_mean_aspect_ratio": {
+      "minimum": 36.54376068455871,
+      "maximum": 46.09081843313142
+    }
+  },
+  "experiment_168h": {
+    "count": 17,
+    "count_sd": 6,
+    "fraction": 0.01,
+    "fraction_sd": 0.005,
+    "diameter_nm": 342.5,
+    "diameter_sd_nm": 46.8,
+    "thickness_nm": 9.0,
+    "thickness_sd_nm": 0.6,
+    "aspect": 39.0,
+    "aspect_sd": 6.6
+  },
+  "conditional_standardized_residuals": {
+    "theta_prime_fraction": 1.0999999999999999,
+    "diameter": 0.4051390622604874,
+    "thickness": -0.3558008054775523,
+    "aspect_ratio": 0.32791467106218597
+  },
+  "target_agreement_is_acceptance_gate": false
+}

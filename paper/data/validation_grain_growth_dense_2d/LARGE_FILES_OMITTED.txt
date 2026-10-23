@@ -1,0 +1,2 @@
+Snapshot fields in this folder are larger than GitHub allows and are not in the repository.
+See paper/LARGE_DATA.md for their sizes and checksums and for the command that regenerates them.

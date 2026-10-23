@@ -1,0 +1,4 @@
+# Optional dependencies for scripts/gpu_pf_gpk_3d.py.
+# Select the CuPy wheel matching the installed CUDA major version.
+cupy-cuda13x>=14.2,<15
+matplotlib>=3.8,<4
