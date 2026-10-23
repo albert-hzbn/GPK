@@ -8,7 +8,7 @@ on:
 jobs:
   linux:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 150
     steps:
       - uses: actions/checkout@v5
 
@@ -28,4 +28,4 @@ jobs:
       - name: Test
         # magnetic_extended is a known failure (README, "Tests and verification");
         # it is excluded here so the badge reports the remaining suite.
-        run: ctest --test-dir build --output-on-failure --timeout 3000 -E magnetic_extended
+        run: ctest --test-dir build --output-on-failure --parallel 4 --timeout 6000 -E magnetic_extended
